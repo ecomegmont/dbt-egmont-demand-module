@@ -3,6 +3,6 @@ version: 2
 
 models:
     - name: ml_input_historical_sales
-      description: ""
+      description: '{{doc("ml_input_historical_sales")}}'
 
 
