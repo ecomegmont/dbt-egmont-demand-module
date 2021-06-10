@@ -4,6 +4,7 @@ brand,
 calculation_date,
 SPLIT(product_id, ':')[OFFSET(3)] product_sku,
 product_price,
+product_price/price_benchmark_value as index,
 price_benchmark_value,
 price_benchmark_currency
 FROM {{ref('price_index')}}
