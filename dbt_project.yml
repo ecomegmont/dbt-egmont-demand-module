@@ -35,5 +35,5 @@ models:
      demand_module:
       # Applies to all files under models/example/
         demand_module:
-            +schema: Analytics
+            +schema: analytics
             +materialized: "table"
