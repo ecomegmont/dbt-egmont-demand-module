@@ -5,7 +5,7 @@ calculation_date,
 SPLIT(product_id, ':')[OFFSET(3)] product_sku,
 product_price,
 price_benchmark_value,
-price_index,
+UNNEST(price_index),
 price_benchmark_currency
 FROM {{ref('price_index')}}
 WHERE
