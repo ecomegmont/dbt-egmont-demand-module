@@ -1,6 +1,6 @@
 SELECT
-transaction_date,
-transaction_id,
+order_date,
+order_number,
 product_sku,
 product_line_price_lcy,
 product_line_price_ccy,
