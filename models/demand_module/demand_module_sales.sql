@@ -1,5 +1,5 @@
 SELECT
-EXTRACT(date from order_date) as order_dt
+EXTRACT(date from order_date) as order_dt,
 market,
 country_iso_2_code,
 order_discount_code,
