@@ -1,5 +1,5 @@
 SELECT
-order_date,
+EXTRACT(date from order_date) as order_dt
 market,
 country_iso_2_code,
 order_discount_code,
@@ -11,6 +11,7 @@ DiscountAmount as discount_amount,
 price_standard,
 price_standard_unit,
 pricelist_name,
+pricelist_id,
 category_description,
 brand_name
 FROM {{ref('transformed_WP_sales')}}
