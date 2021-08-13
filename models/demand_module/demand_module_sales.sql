@@ -17,3 +17,4 @@ pricelist_id,
 category_description,
 brand_name
 FROM {{ref('transformed_WP_sales')}}
+ WHERE NOT product_sku = '{{ var("removes") }}' 
