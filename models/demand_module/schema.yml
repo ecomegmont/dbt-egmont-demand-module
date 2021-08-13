@@ -2,7 +2,7 @@
 version: 2
 
 models:
-    - name: ml_input_historical_sales
-      description: '{{doc("ml_input_historical_sales")}}'
+    - name: demand_module_sales
+      description: '{{doc("demand_module_sales")}}'
 
 
