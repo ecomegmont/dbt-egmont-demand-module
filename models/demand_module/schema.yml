@@ -4,5 +4,8 @@ version: 2
 models:
     - name: demand_module_sales
       description: '{{doc("demand_module_sales")}}'
-
+    - name: demand_module_active_products
+      description: 'This Table calculates from the historical Stock value table, the current active products. By using a weighted measure to allow out of stock days depending on historical stock'
+    - name: demand_module_stock_value
+      description: 'historical inventory levels for all products on all days'
 
