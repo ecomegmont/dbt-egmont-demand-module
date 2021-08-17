@@ -14,10 +14,13 @@ SELECT stock_date,
 product_sku,
 sales_product_description,
 stock_qty,
-weighted_stock_30_active_flag
+weighted_stock_30_active_flag,
+CASE 
+    WHEN weighted_stock_30_active_flag > 0 then 1
+    ELSE 0
+    END as active_product
  FROM BASE
-WHERE stock_date = CURRENT_DATE() 
-AND weighted_stock_30_active_flag > 0
+
 
 
 
