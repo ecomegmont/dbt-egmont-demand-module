@@ -8,4 +8,6 @@ models:
       description: 'This Table calculates from the historical Stock value table, the current active products. By using a weighted measure to allow out of stock days depending on historical stock'
     - name: demand_module_stock_value
       description: 'historical inventory levels for all products on all days'
+    - name: demand_module_active_products
+      description: 'Using a Weighted Range of 30 days after inventory goes to 0 to mark unactive orders'      
 
