@@ -7,5 +7,7 @@ models:
     - name: demand_module_stock_value
       description: 'historical inventory levels for all products on all days'
     - name: demand_module_active_products
-      description: 'Using a Weighted Range of 30 days after inventory goes to 0 to mark unactive orders'      
+      description: 'Using a Weighted Range of 30 days after inventory goes to 0 to mark unactive orders'
+    - name: demand_module_product_category
+      description: 'Decorating the product sku with categories from Storm'
 
