@@ -17,7 +17,7 @@ SELECT
     a.price_standard as price_standard_current_pricelist,
     price_standard_unit as price_standard_unit_current_pricelist,
     pricelist_name,
-    pricelist_id,
+    a.pricelist_id,
     category_description,
     brand_name,
     line_number
