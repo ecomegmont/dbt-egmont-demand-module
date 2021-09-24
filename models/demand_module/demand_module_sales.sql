@@ -5,7 +5,7 @@ SELECT
     country_iso_2_code,
     order_discount_code,
     order_number,
-    product_sku,
+    a.product_sku,
     product_name,
     product_quantity,
     DiscountAmount as discount_amount,
