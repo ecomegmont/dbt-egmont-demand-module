@@ -14,7 +14,7 @@ SELECT
     product_line_price_ccy,
     b.price_standard as top_level_price_standard,
     b.last_updated as top_level_price_last_updated,
-    price_standard as price_standard_current_pricelist,
+    a.price_standard as price_standard_current_pricelist,
     price_standard_unit as price_standard_unit_current_pricelist,
     pricelist_name,
     pricelist_id,
