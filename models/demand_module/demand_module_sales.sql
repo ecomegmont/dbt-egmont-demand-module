@@ -26,4 +26,4 @@ FROM {{ref('transformed_WP_sales')}} a
     left join {{ref('standard_price')}} b
         on a.product_sku = b.product_sku
             and a.market_name = b.Pricelist
-    WHERE NOT a.product_sku =  {{ var("removes") }}'
+    WHERE NOT a.product_sku = {{ var("removes") }}
