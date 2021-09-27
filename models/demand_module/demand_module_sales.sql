@@ -80,3 +80,4 @@ FROM {{ref('transformed_WP_sales')}} a
         )
 
         SELECT * FROM final
+        -- add currency iso code to determine market.
