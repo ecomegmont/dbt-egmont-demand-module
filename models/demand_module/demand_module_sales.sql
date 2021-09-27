@@ -1,7 +1,7 @@
 WITH BASE AS (
 
 SELECT
-    EXTRACT(date from order_date) as order_dt,
+    CAST(EXTRACT(date from order_date)as string) as order_dt,
     market,
     market_name,
     country_iso_2_code,
@@ -49,7 +49,7 @@ FROM {{ref('transformed_WP_sales')}} a
                 FROM {{ref('stg__navision_currencies_to_sek')}}
         ),  final as (
             SELECT
-            order_dt,
+                order_dt,
                 market,
                 market_name,
                 country_iso_2_code,
@@ -76,7 +76,7 @@ FROM {{ref('transformed_WP_sales')}} a
                 from BASE a
                     left join 
                         currency_table b
-                            on a.order_date = b.cuDate
+                            on a.order_dt = b.cuDate
         )
 
         SELECT * FROM final
