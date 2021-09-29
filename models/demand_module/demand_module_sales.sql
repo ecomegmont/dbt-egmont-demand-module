@@ -69,16 +69,19 @@ FROM {{ref('transformed_WP_sales')}} a
                         product_line_price_lcy,
                         product_line_price_ccy,
                         price_standard_current_pricelist,  --add converted
+                        {{ conversion_when('price_standard_current_pricelist')}} as price_standard_current_pricelist_lcy,
                         price_standard_unit_current_pricelist,  --add converted
+                         {{ conversion_when('price_standard_unit_current_pricelist')}} as price_standard_unit_current_pricelist_lcy,
                         top_level_price_standard,  --add converted
+                        {{ conversion_when('top_level_price_standard')}} as top_level_price_standard_lcy,
                         top_level_price_standard_unit,  --add converted
+                        {{ conversion_when('top_level_price_standard_unit')}} as top_level_price_standard_unit_lcy,
                         top_level_price_last_updated,
                         pricelist_name,
                         a.pricelist_id,
                         category_description,
                         brand_name,
-                        line_number,
-                        b.*
+                        line_number
                         from BASE a
                             left join 
                                 currency_table b
