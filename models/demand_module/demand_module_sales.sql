@@ -1,3 +1,6 @@
+
+
+
 WITH BASE AS (
 
 SELECT
@@ -7,6 +10,7 @@ SELECT
     country_iso_2_code,
     order_discount_code,
     order_number,
+    currency_iso_code,
     a.product_sku,
     product_name,
     product_quantity,
@@ -48,36 +52,38 @@ FROM {{ref('transformed_WP_sales')}} a
                 CONCAT(EXTRACT(YEAR FROM date),'-',LPAD(CAST(EXTRACT(MONTH from date) as string),2,'0'),'-',LPAD(CAST(EXTRACT(DAY from date) as string),2,'0')) as cuDate
                 FROM {{ref('stg__navision_currencies_to_sek')}}
         ),  final as (
-            SELECT
-                order_dt,
-                market,
-                market_name,
-                country_iso_2_code,
-                order_discount_code,
-                order_number,
-                a.product_sku,
-                product_name,
-                product_quantity,
-                discount_amount, --add converted
-                DiscountPercentage,
-                product_line_price_lcy,
-                product_line_price_ccy,
-                price_standard_current_pricelist,  --add converted
-                price_standard_unit_current_pricelist,  --add converted
-                top_level_price_standard,  --add converted
-                top_level_price_standard_unit,  --add converted
-                top_level_price_last_updated,
-                pricelist_name,
-                a.pricelist_id,
-                category_description,
-                brand_name,
-                line_number,
-                b.*
-                from BASE a
-                    left join 
-                        currency_table b
-                            on a.order_dt = b.cuDate
-        )
+                    SELECT
+                        order_dt,
+                        market,
+                        market_name,
+                        currency_iso_code,
+                        country_iso_2_code,
+                        order_discount_code,
+                        order_number,
+                        a.product_sku,
+                        product_name,
+                        product_quantity,
+                        discount_amount, --add converted
+                        {{ conversion_when('discount_amount')}} as discount_amount_lcy,
+                        DiscountPercentage,
+                        product_line_price_lcy,
+                        product_line_price_ccy,
+                        price_standard_current_pricelist,  --add converted
+                        price_standard_unit_current_pricelist,  --add converted
+                        top_level_price_standard,  --add converted
+                        top_level_price_standard_unit,  --add converted
+                        top_level_price_last_updated,
+                        pricelist_name,
+                        a.pricelist_id,
+                        category_description,
+                        brand_name,
+                        line_number,
+                        b.*
+                        from BASE a
+                            left join 
+                                currency_table b
+                                    on a.order_dt = b.cuDate
+                )
 
         SELECT * FROM final
         -- add currency iso code to determine market. 
