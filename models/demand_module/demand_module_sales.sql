@@ -36,7 +36,7 @@ FROM {{ref('transformed_WP_sales')}} a
 
 ),     currency_table AS ( -- take conversion table
         {# Extract join date in currency table #}
-        SELECT  date,
+        SELECT  currency_date,
                 CAD_rate,
                 CHF_rate,
                 DKK_rate,
@@ -49,7 +49,7 @@ FROM {{ref('transformed_WP_sales')}} a
                 EUR_rate,
                 GBP_rate,
                 USD_rate,
-                CONCAT(EXTRACT(YEAR FROM date),'-',LPAD(CAST(EXTRACT(MONTH from date) as string),2,'0'),'-',LPAD(CAST(EXTRACT(DAY from date) as string),2,'0')) as cuDate
+                CONCAT(EXTRACT(YEAR FROM currency_date),'-',LPAD(CAST(EXTRACT(MONTH from currency_date) as string),2,'0'),'-',LPAD(CAST(EXTRACT(DAY from currency_date) as string),2,'0')) as cuDate
                 FROM {{ref('stg__navision_currencies_to_sek')}}
         ),  final as ( -- join all conversions. creating dependencies on the line. Use Macro conversion_when to shorten code. all existing measures in market money, converted to Lcy/sek aswell.
                     SELECT
