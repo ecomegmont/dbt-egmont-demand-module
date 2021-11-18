@@ -87,7 +87,7 @@ FROM {{ref('transformed_WP_sales')}} a
                             left join 
                                 currency_table b
                                     on a.order_dt = b.cuDate
-                            left join currency_table c on a.order_dt = c.top_level_price_last_updated
+                            left join currency_table c on a.top_level_price_last_updated = c.cuDate
                 )
 
         SELECT * FROM final
