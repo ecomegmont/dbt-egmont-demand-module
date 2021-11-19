@@ -75,7 +75,6 @@ FROM {{ref('transformed_WP_sales')}} a
                         top_level_price_standard,  
                         {{ conversion_when('top_level_price_standard')}} as top_level_price_standard_lcy,
                         top_level_price_standard_unit, 
-                        c.*,
                         {{ conversion_when('top_level_price_standard_unit')}} as top_level_price_standard_unit_lcy,
                         top_level_price_last_updated,
                         pricelist_name,
@@ -87,7 +86,7 @@ FROM {{ref('transformed_WP_sales')}} a
                             left join 
                                 currency_table b
                                     on a.order_dt = b.cuDate
-                            left join currency_table c on a.top_level_price_last_updated = c.cuDate
+                    
                 )
 
         SELECT * FROM final
