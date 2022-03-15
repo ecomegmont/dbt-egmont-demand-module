@@ -1,4 +1,4 @@
-select * from {{ ref('input_purchase_order') }}
+select * from {{ ref('input_purchase_orders') }}
 where expected_arrival_date is not null
 
 --excluding values that not have a expected date. 
